@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+	
+	
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,6 +30,23 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+	<!-- Cargamos el script de jquery para leer json -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+	</script>
+
+
+	<script>
+		$(document).ready(function(){
+			$("button").click(function(){
+				$.getJSON("http://127.0.0.1:8000/artistas/?format=json",function(result){
+      				$.each(result, function(i, field){
+        				$("div").append(field + " ");
+      				});
+    			});
+  			});
+		});
+	</script>
 
 </head>
 
@@ -85,12 +104,15 @@
         </div>
     </header>
 
-    <!-- ultimos videos -->
+    <!-- ultimos videos  -->
+	<!-- url artistas http://127.0.0.1:8000/artistas/?format=json -->
     <section id="about" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Últimos videos</h2>
                 <p>Te presentamos las últimas novedades y los artitas emergentes del momento.</p>
+				<button>Get JSON data</button>
+				<div></div>
             </div>
         </div>
     </section>
